@@ -25,6 +25,7 @@ dependencies:
   shimmer: ^3.0.0
 
   connectivity_plus: ^6.1.4
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:

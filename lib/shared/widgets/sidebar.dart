@@ -10,25 +10,70 @@ class AppSidebar extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Drawer(
-      child: ListView(padding: EdgeInsets.zero, children: [
-        DrawerHeader(
-          decoration: BoxDecoration(color: colorScheme.primaryContainer),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('Pesantren Management',
-                style: theme.textTheme.titleMedium?.copyWith(
-                  color: colorScheme.onPrimaryContainer,
-                )),
-            const SizedBox(height: 4),
-            Text('Bendahara', style: theme.textTheme.bodySmall),
-          ]),
-        ),
-        _MenuItem(icon: Icons.dashboard, label: 'Dashboard', route: '/dashboard'),
-        _MenuItem(icon: Icons.receipt_long, label: 'Tagihan', route: '/billing'),
-        _MenuItem(icon: Icons.payments, label: 'Pembayaran', route: '/payment'),
-        _MenuItem(icon: Icons.account_balance, label: 'Buku Kas', route: '/cashbook'),
-        const Divider(),
-        _MenuItem(icon: Icons.logout, label: 'Keluar', route: '/login'),
-      ]),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: colorScheme.primaryContainer),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Pesantren Management',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: colorScheme.onPrimaryContainer,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text('Bendahara',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: colorScheme.onPrimaryContainer,
+                    )),
+              ],
+            ),
+          ),
+          _MenuItem(
+            icon: Icons.dashboard,
+            label: 'Dashboard',
+            route: '/dashboard',
+            context: context,
+          ),
+          const Divider(),
+          _MenuItem(
+            icon: Icons.people,
+            label: 'Data Santri',
+            route: '/santri',
+            context: context,
+          ),
+          const Divider(),
+          _MenuItem(
+            icon: Icons.receipt_long,
+            label: 'Tagihan',
+            route: '/billing',
+            context: context,
+          ),
+          _MenuItem(
+            icon: Icons.payments,
+            label: 'Pembayaran',
+            route: '/payment',
+            context: context,
+          ),
+          _MenuItem(
+            icon: Icons.account_balance,
+            label: 'Buku Kas',
+            route: '/cashbook',
+            context: context,
+          ),
+          const Divider(),
+          _MenuItem(
+            icon: Icons.logout,
+            label: 'Keluar',
+            route: '/login',
+            context: context,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -37,8 +82,14 @@ class _MenuItem extends StatelessWidget {
   final IconData icon;
   final String label;
   final String route;
+  final BuildContext context;
 
-  const _MenuItem({required this.icon, required this.label, required this.route});
+  const _MenuItem({
+    required this.icon,
+    required this.label,
+    required this.route,
+    required this.context,
+  });
 
   @override
   Widget build(BuildContext context) {
