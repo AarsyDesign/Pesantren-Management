@@ -11,11 +11,10 @@ Kelas _$KelasFromJson(Map<String, dynamic> json) => Kelas(
   tenantId: json['tenantId'] as String,
   tahunAjaranId: json['tahunAjaranId'] as String,
   nama: json['nama'] as String,
-  tingkat: (json['tingkat'] as num?)?.toInt(),
-  waliKelas: json['waliKelas'] as String?,
-  isDeleted: json['isDeleted'] as bool,
-  createdAt: json['createdAt'] as String,
-  updatedAt: json['updatedAt'] as String,
+  waliId: json['waliId'] as String?,
+  kapasitas: (json['kapasitas'] as num).toInt(),
+  createdAt: DateTime.parse(json['createdAt'] as String),
+  updatedAt: DateTime.parse(json['updatedAt'] as String),
 );
 
 Map<String, dynamic> _$KelasToJson(Kelas instance) => <String, dynamic>{
@@ -23,9 +22,8 @@ Map<String, dynamic> _$KelasToJson(Kelas instance) => <String, dynamic>{
   'tenantId': instance.tenantId,
   'tahunAjaranId': instance.tahunAjaranId,
   'nama': instance.nama,
-  'tingkat': instance.tingkat,
-  'waliKelas': instance.waliKelas,
-  'isDeleted': instance.isDeleted,
-  'createdAt': instance.createdAt,
-  'updatedAt': instance.updatedAt,
+  'waliId': instance.waliId,
+  'kapasitas': instance.kapasitas,
+  'createdAt': instance.createdAt.toIso8601String(),
+  'updatedAt': instance.updatedAt.toIso8601String(),
 };

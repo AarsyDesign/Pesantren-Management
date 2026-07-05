@@ -1,50 +1,51 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'kelas.g.dart';
+part 'tahun_ajaran.g.dart';
 
 @JsonSerializable()
-class Kelas {
+class TahunAjaran {
   final String id;
   final String tenantId;
-  final String tahunAjaranId;
   final String nama;
-  final String? waliId;
-  final int kapasitas;
+  final DateTime mulai;
+  final DateTime selesai;
+  final bool aktif;
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  Kelas({
+  TahunAjaran({
     required this.id,
     required this.tenantId,
-    required this.tahunAjaranId,
     required this.nama,
-    this.waliId,
-    required this.kapasitas,
+    required this.mulai,
+    required this.selesai,
+    required this.aktif,
     required this.createdAt,
     required this.updatedAt,
   });
 
-  factory Kelas.fromJson(Map<String, dynamic> json) => _$KelasFromJson(json);
+  factory TahunAjaran.fromJson(Map<String, dynamic> json) =>
+      _$TahunAjaranFromJson(json);
 
-  Map<String, dynamic> toJson() => _$KelasToJson(this);
+  Map<String, dynamic> toJson() => _$TahunAjaranToJson(this);
 
-  Kelas copyWith({
+  TahunAjaran copyWith({
     String? id,
     String? tenantId,
-    String? tahunAjaranId,
     String? nama,
-    String? waliId,
-    int? kapasitas,
+    DateTime? mulai,
+    DateTime? selesai,
+    bool? aktif,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) =>
-      Kelas(
+      TahunAjaran(
         id: id ?? this.id,
         tenantId: tenantId ?? this.tenantId,
-        tahunAjaranId: tahunAjaranId ?? this.tahunAjaranId,
         nama: nama ?? this.nama,
-        waliId: waliId ?? this.waliId,
-        kapasitas: kapasitas ?? this.kapasitas,
+        mulai: mulai ?? this.mulai,
+        selesai: selesai ?? this.selesai,
+        aktif: aktif ?? this.aktif,
         createdAt: createdAt ?? this.createdAt,
         updatedAt: updatedAt ?? this.updatedAt,
       );

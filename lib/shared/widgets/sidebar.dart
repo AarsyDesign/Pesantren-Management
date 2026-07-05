@@ -33,45 +33,18 @@ class AppSidebar extends StatelessWidget {
               ],
             ),
           ),
-          _MenuItem(
-            icon: Icons.dashboard,
-            label: 'Dashboard',
-            route: '/dashboard',
-            context: context,
-          ),
+          _MenuItem(icon: Icons.dashboard, label: 'Dashboard', route: '/dashboard', context: context),
           const Divider(),
-          _MenuItem(
-            icon: Icons.people,
-            label: 'Data Santri',
-            route: '/santri',
-            context: context,
-          ),
+          _MenuItem(icon: Icons.people, label: 'Santri', route: '/santri', context: context),
+          _MenuItem(icon: Icons.calendar_today, label: 'Tahun Ajaran', route: '/tahun-ajaran', context: context),
+          _MenuItem(icon: Icons.class_, label: 'Kelas', route: '/kelas', context: context),
+          _MenuItem(icon: Icons.group, label: 'Rombel', route: '/santri-kelas', context: context),
           const Divider(),
-          _MenuItem(
-            icon: Icons.receipt_long,
-            label: 'Tagihan',
-            route: '/billing',
-            context: context,
-          ),
-          _MenuItem(
-            icon: Icons.payments,
-            label: 'Pembayaran',
-            route: '/payment',
-            context: context,
-          ),
-          _MenuItem(
-            icon: Icons.account_balance,
-            label: 'Buku Kas',
-            route: '/cashbook',
-            context: context,
-          ),
+          _MenuItem(icon: Icons.receipt_long, label: 'Tagihan', route: '/billing', context: context),
+          _MenuItem(icon: Icons.payments, label: 'Pembayaran', route: '/payment', context: context),
+          _MenuItem(icon: Icons.account_balance, label: 'Buku Kas', route: '/cashbook', context: context),
           const Divider(),
-          _MenuItem(
-            icon: Icons.logout,
-            label: 'Keluar',
-            route: '/login',
-            context: context,
-          ),
+          _MenuItem(icon: Icons.logout, label: 'Keluar', route: '/login', context: context),
         ],
       ),
     );
@@ -84,12 +57,7 @@ class _MenuItem extends StatelessWidget {
   final String route;
   final BuildContext context;
 
-  const _MenuItem({
-    required this.icon,
-    required this.label,
-    required this.route,
-    required this.context,
-  });
+  const _MenuItem({required this.icon, required this.label, required this.route, required this.context});
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +69,7 @@ class _MenuItem extends StatelessWidget {
       onTap: () {
         context.go(route);
         if (Scaffold.maybeOf(context)?.hasDrawer ?? false) {
-          Navigator.of(context).pop(); // close drawer
+          Navigator.of(context).pop();
         }
       },
     );
