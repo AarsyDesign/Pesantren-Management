@@ -1008,5 +1008,494 @@ class _SantriKelasDetailProviderElement
   String get id => (origin as SantriKelasDetailProvider).id;
 }
 
+String _$waliListHash() => r'3e857df3fb9466f65e24cf8e550a9e5e8fc43c0b';
+
+abstract class _$WaliList
+    extends BuildlessAutoDisposeAsyncNotifier<List<Wali>> {
+  late final int limit;
+  late final int offset;
+
+  FutureOr<List<Wali>> build({int limit = 50, int offset = 0});
+}
+
+/// See also [WaliList].
+@ProviderFor(WaliList)
+const waliListProvider = WaliListFamily();
+
+/// See also [WaliList].
+class WaliListFamily extends Family<AsyncValue<List<Wali>>> {
+  /// See also [WaliList].
+  const WaliListFamily();
+
+  /// See also [WaliList].
+  WaliListProvider call({int limit = 50, int offset = 0}) {
+    return WaliListProvider(limit: limit, offset: offset);
+  }
+
+  @override
+  WaliListProvider getProviderOverride(covariant WaliListProvider provider) {
+    return call(limit: provider.limit, offset: provider.offset);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'waliListProvider';
+}
+
+/// See also [WaliList].
+class WaliListProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<WaliList, List<Wali>> {
+  /// See also [WaliList].
+  WaliListProvider({int limit = 50, int offset = 0})
+    : this._internal(
+        () => WaliList()
+          ..limit = limit
+          ..offset = offset,
+        from: waliListProvider,
+        name: r'waliListProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$waliListHash,
+        dependencies: WaliListFamily._dependencies,
+        allTransitiveDependencies: WaliListFamily._allTransitiveDependencies,
+        limit: limit,
+        offset: offset,
+      );
+
+  WaliListProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.limit,
+    required this.offset,
+  }) : super.internal();
+
+  final int limit;
+  final int offset;
+
+  @override
+  FutureOr<List<Wali>> runNotifierBuild(covariant WaliList notifier) {
+    return notifier.build(limit: limit, offset: offset);
+  }
+
+  @override
+  Override overrideWith(WaliList Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: WaliListProvider._internal(
+        () => create()
+          ..limit = limit
+          ..offset = offset,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        limit: limit,
+        offset: offset,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<WaliList, List<Wali>>
+  createElement() {
+    return _WaliListProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is WaliListProvider &&
+        other.limit == limit &&
+        other.offset == offset;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, limit.hashCode);
+    hash = _SystemHash.combine(hash, offset.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin WaliListRef on AutoDisposeAsyncNotifierProviderRef<List<Wali>> {
+  /// The parameter `limit` of this provider.
+  int get limit;
+
+  /// The parameter `offset` of this provider.
+  int get offset;
+}
+
+class _WaliListProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<WaliList, List<Wali>>
+    with WaliListRef {
+  _WaliListProviderElement(super.provider);
+
+  @override
+  int get limit => (origin as WaliListProvider).limit;
+  @override
+  int get offset => (origin as WaliListProvider).offset;
+}
+
+String _$waliDetailHash() => r'5b38addc7031be1f00b75b6e21bb8c6581e3956f';
+
+abstract class _$WaliDetail extends BuildlessAutoDisposeAsyncNotifier<Wali?> {
+  late final String id;
+
+  FutureOr<Wali?> build(String id);
+}
+
+/// See also [WaliDetail].
+@ProviderFor(WaliDetail)
+const waliDetailProvider = WaliDetailFamily();
+
+/// See also [WaliDetail].
+class WaliDetailFamily extends Family<AsyncValue<Wali?>> {
+  /// See also [WaliDetail].
+  const WaliDetailFamily();
+
+  /// See also [WaliDetail].
+  WaliDetailProvider call(String id) {
+    return WaliDetailProvider(id);
+  }
+
+  @override
+  WaliDetailProvider getProviderOverride(
+    covariant WaliDetailProvider provider,
+  ) {
+    return call(provider.id);
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'waliDetailProvider';
+}
+
+/// See also [WaliDetail].
+class WaliDetailProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<WaliDetail, Wali?> {
+  /// See also [WaliDetail].
+  WaliDetailProvider(String id)
+    : this._internal(
+        () => WaliDetail()..id = id,
+        from: waliDetailProvider,
+        name: r'waliDetailProvider',
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$waliDetailHash,
+        dependencies: WaliDetailFamily._dependencies,
+        allTransitiveDependencies: WaliDetailFamily._allTransitiveDependencies,
+        id: id,
+      );
+
+  WaliDetailProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final String id;
+
+  @override
+  FutureOr<Wali?> runNotifierBuild(covariant WaliDetail notifier) {
+    return notifier.build(id);
+  }
+
+  @override
+  Override overrideWith(WaliDetail Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: WaliDetailProvider._internal(
+        () => create()..id = id,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<WaliDetail, Wali?> createElement() {
+    return _WaliDetailProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is WaliDetailProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin WaliDetailRef on AutoDisposeAsyncNotifierProviderRef<Wali?> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _WaliDetailProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<WaliDetail, Wali?>
+    with WaliDetailRef {
+  _WaliDetailProviderElement(super.provider);
+
+  @override
+  String get id => (origin as WaliDetailProvider).id;
+}
+
+String _$waliSantriListHash() => r'e23027b11ed384b34d3fef272a284bb31632a95d';
+
+abstract class _$WaliSantriList
+    extends BuildlessAutoDisposeAsyncNotifier<List<WaliSantri>> {
+  late final String? waliId;
+  late final String? santriId;
+  late final int limit;
+  late final int offset;
+
+  FutureOr<List<WaliSantri>> build({
+    String? waliId,
+    String? santriId,
+    int limit = 50,
+    int offset = 0,
+  });
+}
+
+/// See also [WaliSantriList].
+@ProviderFor(WaliSantriList)
+const waliSantriListProvider = WaliSantriListFamily();
+
+/// See also [WaliSantriList].
+class WaliSantriListFamily extends Family<AsyncValue<List<WaliSantri>>> {
+  /// See also [WaliSantriList].
+  const WaliSantriListFamily();
+
+  /// See also [WaliSantriList].
+  WaliSantriListProvider call({
+    String? waliId,
+    String? santriId,
+    int limit = 50,
+    int offset = 0,
+  }) {
+    return WaliSantriListProvider(
+      waliId: waliId,
+      santriId: santriId,
+      limit: limit,
+      offset: offset,
+    );
+  }
+
+  @override
+  WaliSantriListProvider getProviderOverride(
+    covariant WaliSantriListProvider provider,
+  ) {
+    return call(
+      waliId: provider.waliId,
+      santriId: provider.santriId,
+      limit: provider.limit,
+      offset: provider.offset,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'waliSantriListProvider';
+}
+
+/// See also [WaliSantriList].
+class WaliSantriListProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<WaliSantriList, List<WaliSantri>> {
+  /// See also [WaliSantriList].
+  WaliSantriListProvider({
+    String? waliId,
+    String? santriId,
+    int limit = 50,
+    int offset = 0,
+  }) : this._internal(
+         () => WaliSantriList()
+           ..waliId = waliId
+           ..santriId = santriId
+           ..limit = limit
+           ..offset = offset,
+         from: waliSantriListProvider,
+         name: r'waliSantriListProvider',
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$waliSantriListHash,
+         dependencies: WaliSantriListFamily._dependencies,
+         allTransitiveDependencies:
+             WaliSantriListFamily._allTransitiveDependencies,
+         waliId: waliId,
+         santriId: santriId,
+         limit: limit,
+         offset: offset,
+       );
+
+  WaliSantriListProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.waliId,
+    required this.santriId,
+    required this.limit,
+    required this.offset,
+  }) : super.internal();
+
+  final String? waliId;
+  final String? santriId;
+  final int limit;
+  final int offset;
+
+  @override
+  FutureOr<List<WaliSantri>> runNotifierBuild(
+    covariant WaliSantriList notifier,
+  ) {
+    return notifier.build(
+      waliId: waliId,
+      santriId: santriId,
+      limit: limit,
+      offset: offset,
+    );
+  }
+
+  @override
+  Override overrideWith(WaliSantriList Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: WaliSantriListProvider._internal(
+        () => create()
+          ..waliId = waliId
+          ..santriId = santriId
+          ..limit = limit
+          ..offset = offset,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        waliId: waliId,
+        santriId: santriId,
+        limit: limit,
+        offset: offset,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderElement<WaliSantriList, List<WaliSantri>>
+  createElement() {
+    return _WaliSantriListProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is WaliSantriListProvider &&
+        other.waliId == waliId &&
+        other.santriId == santriId &&
+        other.limit == limit &&
+        other.offset == offset;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, waliId.hashCode);
+    hash = _SystemHash.combine(hash, santriId.hashCode);
+    hash = _SystemHash.combine(hash, limit.hashCode);
+    hash = _SystemHash.combine(hash, offset.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin WaliSantriListRef
+    on AutoDisposeAsyncNotifierProviderRef<List<WaliSantri>> {
+  /// The parameter `waliId` of this provider.
+  String? get waliId;
+
+  /// The parameter `santriId` of this provider.
+  String? get santriId;
+
+  /// The parameter `limit` of this provider.
+  int get limit;
+
+  /// The parameter `offset` of this provider.
+  int get offset;
+}
+
+class _WaliSantriListProviderElement
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          WaliSantriList,
+          List<WaliSantri>
+        >
+    with WaliSantriListRef {
+  _WaliSantriListProviderElement(super.provider);
+
+  @override
+  String? get waliId => (origin as WaliSantriListProvider).waliId;
+  @override
+  String? get santriId => (origin as WaliSantriListProvider).santriId;
+  @override
+  int get limit => (origin as WaliSantriListProvider).limit;
+  @override
+  int get offset => (origin as WaliSantriListProvider).offset;
+}
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

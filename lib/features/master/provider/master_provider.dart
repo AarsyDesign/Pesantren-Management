@@ -2,9 +2,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:pesantren_management/features/master/models/tahun_ajaran.dart';
 import 'package:pesantren_management/features/master/models/kelas.dart';
 import 'package:pesantren_management/features/master/models/santri_kelas.dart';
+import 'package:pesantren_management/features/master/models/wali.dart';
+import 'package:pesantren_management/features/master/models/wali_santri.dart';
 import 'package:pesantren_management/features/master/repo/tahun_ajaran_repo.dart';
 import 'package:pesantren_management/features/master/repo/kelas_repo.dart';
 import 'package:pesantren_management/features/master/repo/santri_kelas_repo.dart';
+import 'package:pesantren_management/features/master/repo/wali_repo.dart';
+import 'package:pesantren_management/features/master/repo/wali_santri_repo.dart';
 import 'package:pesantren_management/shared/providers/supabase_provider.dart';
 
 part 'master_provider.g.dart';
@@ -12,8 +16,10 @@ part 'master_provider.g.dart';
 final tahunAjaranRepoProvider = Provider((ref) => TahunAjaranRepo(ref.watch(supabaseClientProvider)));
 final kelasRepoProvider = Provider((ref) => KelasRepo(ref.watch(supabaseClientProvider)));
 final santiKelasRepoProvider = Provider((ref) => SantriKelasRepo(ref.watch(supabaseClientProvider)));
+final waliRepoProvider = Provider((ref) => WaliRepo(ref.watch(supabaseClientProvider)));
+final waliSantriRepoProvider = Provider((ref) => WaliSantriRepo(ref.watch(supabaseClientProvider)));
 
-// ─── Tahun Ajaran ────────────────────────────────────────────────────────────
+// Tahun Ajaran
 
 @riverpod
 class TahunAjaranList extends _$TahunAjaranList {
@@ -165,5 +171,86 @@ class SantriKelasDetail extends _$SantriKelasDetail {
   Future<SantriKelas?> build(String id) async {
     final result = await ref.read(santiKelasRepoProvider).get(id);
     return result.fold((data) => data, (e) => throw e);
+  }
+}
+
+// ─── Wali ──────────────────────────────────────────────────────────────────────
+
+@riverpod
+class WaliList extends _$WaliList {
+  @override
+  Future<List<Wali>> build({int limit = 50, int offset = 0}) async {
+    final result = await ref.read(waliRepoProvider).list(limit: limit, offset: offset);
+    return result.fold((data) => data, (e) => throw e);
+  }
+
+  Future<void> refresh() async {
+    state = const AsyncLoading();
+    await future;
+  }
+
+  Future<bool> create({required String nama, String? noTelp, String? alamat}) async {
+    state = const AsyncLoading();
+    final result = await ref.read(waliRepoProvider).create(nama: nama, noTelp: noTelp, alamat: alamat);
+    final ok = result.fold((_) => true, (_) => false);
+    if (ok) await refresh();
+    return ok;
+  }
+
+  Future<bool> updateItem(String id, {String? nama, String? noTelp, String? alamat}) async {
+    state = const AsyncLoading();
+    final result = await ref.read(waliRepoProvider).update(id, nama: nama, noTelp: noTelp, alamat: alamat);
+    final ok = result.fold((_) => true, (_) => false);
+    if (ok) await refresh();
+    return ok;
+  }
+
+  Future<bool> delete(String id) async {
+    state = const AsyncLoading();
+    final result = await ref.read(waliRepoProvider).delete(id);
+    final ok = result.fold((_) => true, (_) => false);
+    if (ok) await refresh();
+    return ok;
+  }
+}
+
+@riverpod
+class WaliDetail extends _$WaliDetail {
+  @override
+  Future<Wali?> build(String id) async {
+    final result = await ref.read(waliRepoProvider).get(id);
+    return result.fold((data) => data, (e) => throw e);
+  }
+}
+
+// ─── Wali Santri Link ───────────────────────────────────────────────────────────
+
+@riverpod
+class WaliSantriList extends _$WaliSantriList {
+  @override
+  Future<List<WaliSantri>> build({String? waliId, String? santriId, int limit = 50, int offset = 0}) async {
+    final result = await ref.read(waliSantriRepoProvider).list(waliId: waliId, santriId: santriId, limit: limit, offset: offset);
+    return result.fold((data) => data, (e) => throw e);
+  }
+
+  Future<void> refresh() async {
+    state = const AsyncLoading();
+    await future;
+  }
+
+  Future<bool> link({required String waliId, required String santriId, required String hubungan}) async {
+    state = const AsyncLoading();
+    final result = await ref.read(waliSantriRepoProvider).link(waliId: waliId, santriId: santriId, hubungan: hubungan);
+    final ok = result.fold((_) => true, (_) => false);
+    if (ok) await refresh();
+    return ok;
+  }
+
+  Future<bool> unlink(String id) async {
+    state = const AsyncLoading();
+    final result = await ref.read(waliSantriRepoProvider).unlink(id);
+    final ok = result.fold((_) => true, (_) => false);
+    if (ok) await refresh();
+    return ok;
   }
 }
